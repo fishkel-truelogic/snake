@@ -124,7 +124,14 @@ public class Board extends JPanel implements ActionListener {
 	}
 
 	public void onKeyRestart() {
-		
+		board = new Pixel[M_HEIGHT][M_WIDTH];
+		snake = new Snake();
+		apple = new Apple(board);
+		setBackground(Color.BLACK);
+		timer.restart();
+		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+		setFocusable(true);
+		addKeyListener(new SnakeKeyListener(this));
 	}
 
 	public void onKeyEnter() {
