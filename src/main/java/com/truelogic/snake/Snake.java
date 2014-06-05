@@ -77,6 +77,16 @@ public class Snake {
 		
 		return false;
 	}
+
+
+	public boolean isAbove(int x, int y) {
+		for (SnakePixel sp: body) {
+			if (sp.getX() == x && sp.getY() == y) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	
 

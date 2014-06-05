@@ -33,8 +33,6 @@ public class Board extends JPanel implements ActionListener {
 
 	private Timer timer;
 	
-	private Pixel[][] board;
-	
 	private Snake snake;
 	
 	private Apple apple;
@@ -74,16 +72,15 @@ public class Board extends JPanel implements ActionListener {
 		snake.move(ate);
 		directionLock = false;
 		if (ate) {
-			apple = new Apple(board);
+			apple = new Apple(snake);
 		}
 		repaint();
 	}
 	
 	public Board() {
 		super();
-		board = new Pixel[M_HEIGHT][M_WIDTH];
 		snake = new Snake();
-		apple = new Apple(board);
+		apple = new Apple(snake);
 		setBackground(Color.BLACK);
 		timer = new Timer(DELAY, this);
 		timer.start();
@@ -124,9 +121,8 @@ public class Board extends JPanel implements ActionListener {
 	}
 
 	public void onKeyRestart() {
-		board = new Pixel[M_HEIGHT][M_WIDTH];
 		snake = new Snake();
-		apple = new Apple(board);
+		apple = new Apple(snake);
 		setBackground(Color.BLACK);
 		timer.restart();
 		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
